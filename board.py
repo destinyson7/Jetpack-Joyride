@@ -24,11 +24,12 @@ class Board:
 
             self.grid.append(tmp)
 
-    def show(self, start):
+    def show(self):
         pr = ""
 
         pr += "\033[0;0H"
 
+        start = self.curPos
         end = start + self.columnsAtATime
 
         for i in range(self.rows):

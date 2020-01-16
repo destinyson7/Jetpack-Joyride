@@ -11,14 +11,29 @@ class Board:
         self.curPos = 0
 
     def insert(self):
-        self.grid = np.full((self.rows, self.columns), Base())
+        # self.grid = np.full((self.rows, self.columns), Base())
+
+        self.grid = []
+
+        for i in range(self.rows):
+
+            tmp = []
+
+            for j in range(self.columns):
+                tmp.append(Base())
+
+            self.grid.append(tmp)
 
     def show(self, start):
-        print("\033[0;0H")
+        pr = ""
+
+        pr += "\033[0;0H"
 
         end = start + self.columnsAtATime
 
         for i in range(self.rows):
             for j in range(start, end):
-                print(self.grid[i][j].display, end="")
-            print()
+                pr += self.grid[i][j].display
+            pr += "\n"
+
+        print(pr)

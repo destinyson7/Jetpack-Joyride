@@ -6,3 +6,4 @@ class Character(Base):
         Base.__init__(self)
         self.score = 0
         self.lives = 3
+        self.onGround = False

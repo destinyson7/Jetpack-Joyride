@@ -119,7 +119,7 @@ class Mandalorian(Character):
     def free_fall(self, t, board):
 
         y = (t * t) * 9.8
-        y = y / 100
+        y = y / 1000
         y = y / 5
 
         y = math.ceil(y)

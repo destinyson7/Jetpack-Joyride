@@ -46,6 +46,9 @@ while True:
     elif char == 'd' or char == 'D':
         mandalorian.movex(1, board)
 
+    elif char == 'q' or char == 'Q':
+        break
+
     if mandalorian.onGround:
         t = 0
 

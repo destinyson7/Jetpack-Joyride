@@ -5,13 +5,21 @@ from data import *
 
 class FireBeam:
     def __init__(self, x, y, angle, board):
-        self.display = Back.CYAN + Fore.YELLOW + "B " + Style.RESET_ALL
+        self.display = Fore.YELLOW + 'B' + Style.RESET_ALL
         self.obstacle = True
         self.present = True
         self.start = [x, y]
         self.angle = angle
 
-        for i in range(beam_length):
+        # print(self.angle)
+
+        if self.angle == [0, 1]:
+            cur_beam_length = beam_length * 3
+
+        else:
+            cur_beam_length = beam_length
+
+        for i in range(cur_beam_length):
             curx = self.start[0] + self.angle[0] * i
             cury = self.start[1] + self.angle[1] * i
 

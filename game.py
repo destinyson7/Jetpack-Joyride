@@ -32,7 +32,7 @@ while True:
     if cur - prev >= shift:
         prev = cur
         board.curPos += 1
-        mandalorian.movex(0, board)
+        mandalorian.movex(1, board)
         mandalorian.movey(0, board)
         board.show()
 

@@ -15,6 +15,6 @@ class FireBeam:
             curx = self.start[0] + self.angle[0] * i
             cury = self.start[1] + self.angle[1] * i
 
-            if curx > 0 and curx < rows - 1 and cury > board.curPos and cury < (board.curPos + columnsAtATime - 1):
+            if curx >= 0 and curx < rows and cury >= 0 and cury < columns:
                 board.grid[curx][cury].display = self.display
                 board.grid[curx][cury].obstacle = True

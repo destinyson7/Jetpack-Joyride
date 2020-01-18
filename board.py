@@ -71,7 +71,7 @@ class Board:
 
     def generate_beams(self):
 
-        for j in range(35, columns, 25):
+        for j in range(35, columns, 60):
             x = random.randint(0, rows - 1)
             y = j + random.randint(0, 25)
 

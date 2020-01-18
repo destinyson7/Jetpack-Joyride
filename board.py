@@ -2,6 +2,8 @@ import numpy as np
 from base import Base
 from colorama import Fore, Back, Style
 from data import *
+import random
+from fireBeam import FireBeam
 
 
 class Board:
@@ -26,17 +28,14 @@ class Board:
 
             self.grid.append(tmp)
 
-        self.grid = np.array(self.grid)
+        # self.grid = np.array(self.grid)
 
     def show(self):
 
         pr = ""
 
         pr += "\033[0;0H"
-        pr += "\n"
-        pr += "\n"
-        pr += "\n"
-        pr += "\n"
+        pr += "\n" * 4
 
         start = self.curPos
         end = start + self.columnsAtATime
@@ -69,3 +68,14 @@ class Board:
             pr += "\n"
 
         print(pr)
+
+    def generate_beams(self):
+
+        for j in range(35, columns, 25):
+            x = random.randint(0, rows - 1)
+            y = j + random.randint(0, 25)
+
+            a = random.randint(0, 3)
+            angle = angles[a]
+
+            FireBeam(x, y, angle, self)

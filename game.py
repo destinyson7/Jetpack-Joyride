@@ -7,9 +7,14 @@ from alarmexception import AlarmException
 from getch import _getChUnix as getChar
 from input import *
 from data import *
+import sys
+
+sys.stderr.write("\x1b[2J\x1b[H")
+# Code for clear screen in UNIX machines
 
 board = Board(rows, columns, columnsAtATime)
 board.insert()
+# board.generate_beams()
 
 mandalorian = Mandalorian()
 mandalorian.insert(board)

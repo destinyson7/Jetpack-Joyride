@@ -30,12 +30,14 @@ class Board:
 
         # self.grid = np.array(self.grid)
 
-    def show(self):
+    def show(self, mandalorian):
 
         pr = ""
 
         pr += "\033[0;0H"
         pr += "\n" * 4
+
+        pr += "Lives Remaining: " + str(mandalorian.lives) + "\n"
 
         start = self.curPos
         end = start + self.columnsAtATime
@@ -71,11 +73,15 @@ class Board:
 
     def generate_beams(self):
 
-        for j in range(35, columns - beam_length, 60):
-            x = random.randint(0, rows - 1 - beam_length)
+        beam_cnt = 0
+
+        for j in range(35, columns - beam_length - 2, 50):
+            x = random.randint(0, rows - 2 - beam_length)
             y = j + random.randint(0, 25)
 
             a = random.randint(0, 3)
             angle = angles[a]
 
-            FireBeam(x, y, angle, self)
+            FireBeam(x, y, angle, self, beam_cnt)
+
+            beam_cnt += 1

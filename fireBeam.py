@@ -2,14 +2,17 @@ from base import Base
 from colorama import Fore, Back, Style
 from data import *
 
+beams = []
+
 
 class FireBeam:
-    def __init__(self, x, y, angle, board):
+    def __init__(self, x, y, angle, board, beam_cnt):
         self.display = Fore.YELLOW + 'B' + Style.RESET_ALL
         self.obstacle = True
         self.present = True
         self.start = [x, y]
         self.angle = angle
+        self.beam_cnt = beam_cnt
 
         # print(self.angle)
 
@@ -26,3 +29,5 @@ class FireBeam:
             if curx >= 0 and curx < rows and cury >= 0 and cury < columns:
                 board.grid[curx][cury].display = self.display
                 board.grid[curx][cury].obstacle = True
+
+        beams.append([x, y, angle])

@@ -34,7 +34,7 @@ while True:
         board.curPos += 1
         mandalorian.movex(1, board)
         mandalorian.movey(0, board)
-        board.show()
+        board.show(mandalorian)
 
     char = user_input()
 
@@ -60,4 +60,7 @@ while True:
     elif char == 'q' or char == 'Q':
         break
 
-    board.show()
+    if mandalorian.lives <= 0:
+        break
+
+    board.show(mandalorian)

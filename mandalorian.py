@@ -17,6 +17,16 @@ class Mandalorian(Character):
     def insert(self, board):
         for i in self.coordinates:
             for j in self.coordinates[i]:
+                if board.grid[i][j].obstacle:
+                    self.lives -= 1
+
+                    for a in range(rows):
+                        for b in range(board.curPos, board.curPos + columnsAtATime):
+                            board.grid[a][b].obstacle = False
+                            board.grid[a][b].display = base_display
+
+        for i in self.coordinates:
+            for j in self.coordinates[i]:
                 board.grid[i][j].display = self.display
 
     def erase(self, board):

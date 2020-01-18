@@ -1,4 +1,10 @@
-rows = 50
-columns = 20000
-columnsAtATime = 200
+from colorama import Fore, Back, Style
+
+rows = 40
+columns = 2000
+columnsAtATime = 150
 shift = 0.15
+beam_length = 5
+base_display = Back.BLACK + ' ' + Style.RESET_ALL
+border_display = Back.MAGENTA + ' ' + Style.RESET_ALL
+mando_display = Back.RED + ' ' + Style.RESET_ALL

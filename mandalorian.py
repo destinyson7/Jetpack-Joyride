@@ -7,13 +7,12 @@ import math
 class Mandalorian(Character):
     def __init__(self):
         Character.__init__(self)
-        self.display = Back.RED + ' ' + Style.RESET_ALL
+        self.display = mando_display
         self.coordinates = {
             25: [25],
             26: [25],
             27: [24, 26]
         }
-        self.base_display = Back.BLUE + ' ' + Style.RESET_ALL
 
     def insert(self, board):
         for i in self.coordinates:
@@ -23,7 +22,7 @@ class Mandalorian(Character):
     def erase(self, board):
         for i in self.coordinates:
             for j in self.coordinates[i]:
-                board.grid[i][j].display = self.base_display
+                board.grid[i][j].display = base_display
 
     def movey(self, y, board):
         tmp = {}

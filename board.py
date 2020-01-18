@@ -1,6 +1,7 @@
 import numpy as np
 from base import Base
 from colorama import Fore, Back, Style
+from data import *
 
 
 class Board:
@@ -10,7 +11,6 @@ class Board:
         self.columns = columns
         self.columnsAtATime = columnsAtATime
         self.curPos = 0
-        self.base_display = Back.BLUE + ' ' + Style.RESET_ALL
 
     def insert(self):
         # self.grid = np.full((self.rows, self.columns), Base())
@@ -26,22 +26,46 @@ class Board:
 
             self.grid.append(tmp)
 
+        self.grid = np.array(self.grid)
+
     def show(self):
+
         pr = ""
 
         pr += "\033[0;0H"
+        pr += "\n"
+        pr += "\n"
+        pr += "\n"
+        pr += "\n"
 
         start = self.curPos
         end = start + self.columnsAtATime
 
-        for i in range(self.rows):
+        for i in range(2):
+            pr += border_display * 3
+
             for j in range(start, end):
-                pr += self.grid[i][j].display
+                pr += border_display
+
+            pr += border_display * 3
             pr += "\n"
 
-        for j in range(start, end):
-            pr += self.base_display
+        for i in range(self.rows):
+            pr += border_display * 3
 
-        pr += "\n"
+            for j in range(start, end):
+                pr += self.grid[i][j].display
+
+            pr += border_display * 3
+            pr += "\n"
+
+        for i in range(2):
+            pr += border_display * 3
+
+            for j in range(start, end):
+                pr += border_display
+
+            pr += border_display * 3
+            pr += "\n"
 
         print(pr)

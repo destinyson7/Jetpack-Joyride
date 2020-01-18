@@ -21,7 +21,7 @@ t = 0
 while True:
 
     iteration += 1
-    print("iter:", iteration)
+    # print("iter:", iteration)
 
     cur = time.time()
     if cur - prev >= shift:
@@ -32,6 +32,12 @@ while True:
         board.show()
 
     char = user_input()
+
+    if mandalorian.onGround:
+        t = 0
+
+    else:
+        t += 1
 
     if char != 'w' and char != 'W':
         mandalorian.free_fall(t, board)
@@ -48,11 +54,5 @@ while True:
 
     elif char == 'q' or char == 'Q':
         break
-
-    if mandalorian.onGround:
-        t = 0
-
-    else:
-        t += 1
 
     board.show()

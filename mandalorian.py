@@ -22,11 +22,17 @@ class Mandalorian(Character):
 
                     for a in range(rows):
                         for b in range(board.curPos, board.curPos + columnsAtATime):
-                            board.grid[a][b].obstacle = False
-                            board.grid[a][b].display = base_display
+                            if board.grid[a][b].obstacle:
+                                board.grid[a][b].obstacle = False
+                                board.grid[a][b].display = base_display
 
         for i in self.coordinates:
             for j in self.coordinates[i]:
+
+                if board.grid[i][j].isCoin:
+                    self.score += 1
+                    board.grid[i][j].isCoin = False
+
                 board.grid[i][j].display = self.display
 
     def erase(self, board):

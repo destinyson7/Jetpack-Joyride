@@ -1,4 +1,3 @@
-from base import Base
 from colorama import Fore, Back, Style
 from data import *
 

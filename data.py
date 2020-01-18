@@ -3,7 +3,7 @@ from colorama import Fore, Back, Style
 rows = 35
 columns = 20000
 columnsAtATime = 150
-shift = 0.15
+shift = 0.1
 beam_length = 7
 base_display = Back.BLACK + ' ' + Style.RESET_ALL
 border_display = Back.MAGENTA + ' ' + Style.RESET_ALL

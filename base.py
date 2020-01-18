@@ -6,3 +6,4 @@ class Base:
     def __init__(self):
         self.display = base_display
         self.obstacle = False
+        self.isCoin = False

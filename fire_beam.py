@@ -29,7 +29,7 @@ class FireBeam:
         # print(self.angle)
 
         if self.angle == [0, 1]:
-            cur_beam_length = beam_length * 3
+            cur_beam_length = int(beam_length * 2.5)
 
         else:
             cur_beam_length = beam_length

@@ -60,7 +60,7 @@ class Mandalorian(Character):
 
                 elif board.grid[i][j].isBoost:
                     board.game_speed = min(1 + board.game_speed, 2)
-                    board.speed_cnt = 100
+                    board.speed_cnt = boost_length
 
                     Boost.erase(board.grid[i][j].boost_number, board)
 
@@ -170,4 +170,5 @@ class Mandalorian(Character):
 
         y = math.ceil(y)
 
-        self.movey(y, board)
+        for i in range(y):
+            self.movey(1, board)

@@ -29,7 +29,7 @@ class Board:
 
             self.grid.append(tmp)
 
-        # self.grid = np.array(self.grid)
+        self.grid = np.array(self.grid)
 
     def show(self, mandalorian):
 
@@ -93,7 +93,7 @@ class Board:
             x = random.randint(0, rows - 2)
             y = j + random.randint(0, 15)
 
-            number_of_coins = random.randint(0, 5)
+            number_of_coins = random.randint(5, 10)
 
             # print(x, y, number_of_coins)
 

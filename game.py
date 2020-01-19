@@ -32,8 +32,8 @@ while True:
     cur = time.time()
     if cur - prev >= shift:
         prev = cur
-        board.curPos += 1
-        mandalorian.movex(1, board)
+        board.curPos += 1 * game_speed
+        mandalorian.movex(1 * game_speed, board)
         mandalorian.movey(0, board)
         board.show(mandalorian)
 
@@ -49,14 +49,14 @@ while True:
         mandalorian.free_fall(t, board)
 
     if char == 'w' or char == 'W':
-        mandalorian.movey(-1, board)
+        mandalorian.movey(-1 * game_speed, board)
         t = 0
 
     elif char == 'a' or char == 'A':
-        mandalorian.movex(-1, board)
+        mandalorian.movex(-1 * game_speed, board)
 
     elif char == 'd' or char == 'D':
-        mandalorian.movex(1, board)
+        mandalorian.movex(1 * game_speed, board)
 
     elif char == 'q' or char == 'Q':
         break

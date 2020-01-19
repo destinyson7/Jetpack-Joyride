@@ -7,3 +7,4 @@ class Base:
         self.display = base_display
         self.obstacle = False
         self.isCoin = False
+        self.beam_number = -1

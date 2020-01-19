@@ -28,5 +28,6 @@ class FireBeam:
             if curx >= 0 and curx < rows and cury >= 0 and cury < columns:
                 board.grid[curx][cury].display = self.display
                 board.grid[curx][cury].obstacle = True
+                board.grid[curx][cury].beam_number = beam_cnt
 
-        beams.append([x, y, angle])
+        beams.append([x, y, angle, cur_beam_length])

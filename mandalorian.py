@@ -2,6 +2,7 @@ from character import Character
 from colorama import Fore, Back, Style
 from data import *
 import math
+from fire_beam import *
 
 
 class Mandalorian(Character):
@@ -20,11 +21,24 @@ class Mandalorian(Character):
                 if board.grid[i][j].obstacle:
                     self.lives -= 1
 
-                    for a in range(rows):
-                        for b in range(board.curPos, board.curPos + columnsAtATime):
-                            if board.grid[a][b].obstacle:
-                                board.grid[a][b].obstacle = False
-                                board.grid[a][b].display = base_display
+                    x = beams[board.grid[i][j].beam_number][0]
+                    y = beams[board.grid[i][j].beam_number][1]
+                    cur_angle = beams[board.grid[i][j].beam_number][2]
+                    cur_beam_length = beams[board.grid[i][j].beam_number][3]
+
+                    for k in range(cur_beam_length):
+                        curx = x + cur_angle[0] * k
+                        cury = y + cur_angle[1] * k
+
+                        if curx >= 0 and curx < rows and cury >= 0 and cury < columns:
+                            board.grid[curx][cury].display = base_display
+                            board.grid[curx][cury].obstacle = False
+
+                    # for a in range(rows):
+                    #     for b in range(board.curPos, board.curPos + columnsAtATime):
+                    #         if board.grid[a][b].obstacle:
+                    #             board.grid[a][b].obstacle = False
+                    #             board.grid[a][b].display = base_display
 
         for i in self.coordinates:
             for j in self.coordinates[i]:

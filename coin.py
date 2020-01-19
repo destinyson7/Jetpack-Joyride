@@ -11,19 +11,17 @@ class Coin:
 
         can = True
 
-        for i in range(self.start[0], self.start[0] + self.number_of_coins + 1):
-            for j in range(self.start[1], self.start[1] + self.number_of_coins + 1):
-                if i >= 0 and i < rows and j >= 0 and j < columns:
-                    if board.grid[i][j].obstacle:
-                        can = False
-                        break
+        for j in range(self.start[1], self.start[1] + self.number_of_coins + 1):
+            if self.start[0] >= 0 and self.start[0] < rows and j >= 0 and j < columns:
+                if board.grid[self.start[0]][j].obstacle:
+                    can = False
+                    break
 
             if not can:
                 break
 
         if can:
-            for i in range(self.start[0], self.start[0] + self.number_of_coins + 1):
-                for j in range(self.start[1], self.start[1] + self.number_of_coins + 1):
-                    if i >= 0 and i < rows and j >= 0 and j < columns:
-                        board.grid[i][j].display = self.display
-                        board.grid[i][j].isCoin = True
+            for j in range(self.start[1], self.start[1] + self.number_of_coins + 1):
+                if self.start[0] >= 0 and self.start[0] < rows and j >= 0 and j < columns:
+                    board.grid[self.start[0]][j].display = self.display
+                    board.grid[self.start[0]][j].isCoin = True

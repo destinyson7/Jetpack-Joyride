@@ -89,7 +89,7 @@ class Board:
 
     def generate_coins(self):
 
-        for j in range(45, columns - 2, 30):
+        for j in range(45, columns - 2, 29):
             x = random.randint(0, rows - 2)
             y = j + random.randint(0, 15)
 

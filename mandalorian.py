@@ -3,6 +3,7 @@ from colorama import Fore, Back, Style
 from data import *
 import math
 from fire_beam import *
+import time
 
 
 class Mandalorian(Character):
@@ -14,6 +15,21 @@ class Mandalorian(Character):
             26: [25],
             27: [24, 26]
         }
+
+    def flash(self):
+        # time.sleep(0.25)
+
+        pr = ""
+        pr += "\033[0;0H"
+        pri = " " * (columnsAtATime + 10)
+        pri += "\n"
+        pr += pri * (16)
+        pr += (Back.BLACK + " " + Style.RESET_ALL) * (int)(columnsAtATime / 2 - 3) + Fore.GREEN + "Lives Remaining: " + str(self.lives) + Style.RESET_ALL + "\n"
+        pr += pri * (rows - 6)
+
+        print(pr)
+
+        time.sleep(0.25)
 
     def insert(self, board):
         for i in self.coordinates:
@@ -33,6 +49,11 @@ class Mandalorian(Character):
                         if curx >= 0 and curx < rows and cury >= 0 and cury < columns:
                             board.grid[curx][cury].display = base_display
                             board.grid[curx][cury].obstacle = False
+
+                    self.flash()
+                    board.show(self)
+                    time.sleep(0.5)
+                    self.flash()
 
                     # for a in range(rows):
                     #     for b in range(board.curPos, board.curPos + columnsAtATime):

@@ -5,6 +5,7 @@ from data import *
 import random
 from fire_beam import FireBeam
 from coin import Coin
+from boost import Boost
 
 
 class Board:
@@ -89,7 +90,7 @@ class Board:
 
     def generate_coins(self):
 
-        for j in range(45, columns - 2, 29):
+        for j in range(48, columns - 2, 29):
             x = random.randint(0, rows - 2)
             y = j + random.randint(0, 15)
 
@@ -98,3 +99,11 @@ class Board:
             # print(x, y, number_of_coins)
 
             Coin(x, y, self, number_of_coins)
+
+    def generate_boosts(self):
+
+        for j in range(132, columns - 2, 39):
+            x = random.randint(0, rows - 2)
+            y = j + random.randint(0, 15)
+
+            Boost(x, y, self)

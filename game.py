@@ -16,6 +16,7 @@ board = Board(rows, columns, columnsAtATime)
 board.insert()
 board.generate_beams()
 board.generate_coins()
+board.generate_boosts()
 
 mandalorian = Mandalorian()
 mandalorian.insert(board)
@@ -46,7 +47,7 @@ while True:
         t += 1
 
     if char != 'w' and char != 'W':
-        mandalorian.free_fall(t, board)
+        mandalorian.free_fall(t * game_speed, board)
 
     if char == 'w' or char == 'W':
         mandalorian.movey(-1 * game_speed, board)

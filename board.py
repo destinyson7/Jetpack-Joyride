@@ -15,6 +15,8 @@ class Board:
         self.columns = columns
         self.columnsAtATime = columnsAtATime
         self.curPos = 0
+        self.game_speed = 1
+        self.speed_cnt = 0
 
     def insert(self):
         # self.grid = np.full((self.rows, self.columns), Base())
@@ -102,8 +104,12 @@ class Board:
 
     def generate_boosts(self):
 
-        for j in range(132, columns - 2, 39):
-            x = random.randint(0, rows - 2)
+        boost_cnt = 0
+
+        for j in range(132, columns - 8, 79):
+            x = random.randint(0, rows - 8)
             y = j + random.randint(0, 15)
 
-            Boost(x, y, self)
+            Boost(x, y, self, boost_cnt)
+
+            boost_cnt += 1

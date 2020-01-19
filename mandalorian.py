@@ -4,6 +4,7 @@ from data import *
 import math
 from fire_beam import *
 import time
+from boost import Boost
 
 
 class Mandalorian(Character):
@@ -37,18 +38,7 @@ class Mandalorian(Character):
                 if board.grid[i][j].obstacle:
                     self.lives -= 1
 
-                    x = beams[board.grid[i][j].beam_number][0]
-                    y = beams[board.grid[i][j].beam_number][1]
-                    cur_angle = beams[board.grid[i][j].beam_number][2]
-                    cur_beam_length = beams[board.grid[i][j].beam_number][3]
-
-                    for k in range(cur_beam_length):
-                        curx = x + cur_angle[0] * k
-                        cury = y + cur_angle[1] * k
-
-                        if curx >= 0 and curx < rows and cury >= 0 and cury < columns:
-                            board.grid[curx][cury].display = base_display
-                            board.grid[curx][cury].obstacle = False
+                    FireBeam.erase(board.grid[i][j].beam_number, board)
 
                     self.flash()
                     board.show(self)
@@ -67,6 +57,12 @@ class Mandalorian(Character):
                 if board.grid[i][j].isCoin:
                     self.score += 1
                     board.grid[i][j].isCoin = False
+
+                elif board.grid[i][j].isBoost:
+                    board.game_speed = min(1 + board.game_speed, 2)
+                    board.speed_cnt = 100
+
+                    Boost.erase(board.grid[i][j].boost_number, board)
 
                 board.grid[i][j].display = self.display
 

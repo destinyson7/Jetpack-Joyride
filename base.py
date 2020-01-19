@@ -9,3 +9,4 @@ class Base:
         self.beam_number = -1
         self.isCoin = False
         self.isBoost = False
+        self.boost_number = -1

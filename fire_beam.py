@@ -56,3 +56,17 @@ class FireBeam:
             board.grid[curx][cury].beam_number = beam_cnt
 
         beams.append([x, y, angle, cur_beam_length + 2])
+
+    def erase(beam_number, board):
+        x = beams[beam_number][0]
+        y = beams[beam_number][1]
+        cur_angle = beams[beam_number][2]
+        cur_beam_length = beams[beam_number][3]
+
+        for k in range(cur_beam_length):
+            curx = x + cur_angle[0] * k
+            cury = y + cur_angle[1] * k
+
+            if curx >= 0 and curx < rows and cury >= 0 and cury < columns:
+                board.grid[curx][cury].display = base_display
+                board.grid[curx][cury].obstacle = False

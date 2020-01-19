@@ -10,3 +10,4 @@ border_display = Back.MAGENTA + ' ' + Style.RESET_ALL
 mando_display = Back.RED + ' ' + Style.RESET_ALL
 angles = [[1, 0], [1, 1], [0, 1], [1, -1]]
 beam_end = Back.YELLOW + ' ' + Style.RESET_ALL
+boost_display = Back.BLACK + '>' + Style.RESET_ALL

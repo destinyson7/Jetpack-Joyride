@@ -30,7 +30,7 @@ class Mandalorian(Character):
 
         print(pr)
 
-        time.sleep(0.25)
+        time.sleep(0.5)
 
     def insert(self, board):
         for i in self.coordinates:

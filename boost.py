@@ -6,7 +6,7 @@ boosts = []
 
 class Boost:
     def __init__(self, x, y, board, boost_cnt):
-        self.display = '>'
+        self.display = boost_display
         self.present = True
         self.start = [x, y]
 

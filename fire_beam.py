@@ -26,8 +26,6 @@ class FireBeam:
         self.__start = [x, y]
         self.__beam_cnt = beam_cnt
 
-        # print(self.angle)
-
         if self.__angle == [0, 1]:
             cur_beam_length = int(beam_length * 2.5)
 

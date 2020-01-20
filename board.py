@@ -43,8 +43,8 @@ class Board:
         pr += "\033[0;0H"
         pr += "\n" * 4
 
-        pr += "Lives Remaining: " + str(mandalorian.lives) + "\t" + \
-            "Score: " + str(mandalorian.score) + "\n"
+        pr += "Lives: " + Fore.RED + "❤ " * mandalorian.lives + \
+            Style.RESET_ALL + "\t" + "Score: " + str(mandalorian.score) + "\n"
 
         start = self.curPos
         end = start + self.__columnsAtATime

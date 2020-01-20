@@ -30,7 +30,8 @@ class Mandalorian(Character):
         pri += "\n"
         pr += pri * (16)
         pr += (Back.BLACK + " " + Style.RESET_ALL) * (int)(columnsAtATime / 2 - 3) + \
-            Fore.GREEN + "Lives Remaining: " + str(self.lives) + Style.RESET_ALL + "\n"
+            Fore.GREEN + Style.BRIGHT + "Lives Remaining: " + \
+            str(self.lives) + Style.RESET_ALL + "\n"
         pr += pri * (rows - 6)
 
         print(pr)

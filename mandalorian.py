@@ -62,7 +62,7 @@ class Mandalorian(Character):
                 elif board.grid[i][j].isBoost:
                     Boost.erase(board.grid[i][j].boost_number, board)
 
-                    board.game_speed = min(2 + board.game_speed, 3)
+                    board.game_speed = min(1 + board.game_speed, 2)
                     board.speed_cnt = boost_length
 
                 if self.shield:

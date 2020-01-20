@@ -10,16 +10,16 @@ class FireBeam:
         self.__angle = angle
 
         if self.__angle == [0, 1]:
-            self.__display = Fore.YELLOW + '-' + Style.RESET_ALL
+            self.__display = Back.BLACK + Fore.YELLOW + '-' + Style.RESET_ALL
 
         elif self.__angle == [1, 0]:
-            self.__display = Fore.YELLOW + '|' + Style.RESET_ALL
+            self.__display = Back.BLACK + Fore.YELLOW + '|' + Style.RESET_ALL
 
         elif self.__angle == [1, 1]:
-            self.__display = Fore.YELLOW + '\\' + Style.RESET_ALL
+            self.__display = Back.BLACK + Fore.YELLOW + '\\' + Style.RESET_ALL
 
         else:
-            self.__display = Fore.YELLOW + '/' + Style.RESET_ALL
+            self.__display = Back.BLACK + Fore.YELLOW + '/' + Style.RESET_ALL
 
         self.__obstacle = True
         self.__present = True

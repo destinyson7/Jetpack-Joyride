@@ -11,9 +11,9 @@ from bullet import Bullet
 class Mandalorian(Character):
     def __init__(self):
         Character.__init__(self)
-        self.display = mando_display
-        self.shield_display = shield_display
-        self.coordinates = {
+        self.__display = mando_display
+        self.__shield_display = shield_display
+        self.__coordinates = {
             25: [25],
             26: [25],
             27: [24, 26]
@@ -38,8 +38,8 @@ class Mandalorian(Character):
         time.sleep(0.5)
 
     def insert(self, board):
-        for i in self.coordinates:
-            for j in self.coordinates[i]:
+        for i in self.__coordinates:
+            for j in self.__coordinates[i]:
                 if board.grid[i][j].obstacle:
                     if not self.shield:
                         self.lives -= 1
@@ -52,8 +52,8 @@ class Mandalorian(Character):
                         time.sleep(0.5)
                         self.flash()
 
-        for i in self.coordinates:
-            for j in self.coordinates[i]:
+        for i in self.__coordinates:
+            for j in self.__coordinates[i]:
 
                 if board.grid[i][j].isCoin:
                     self.score += 1
@@ -66,14 +66,14 @@ class Mandalorian(Character):
                     board.speed_cnt = boost_length
 
                 if self.shield:
-                    board.grid[i][j].display = self.shield_display
+                    board.grid[i][j].display = self.__shield_display
 
                 else:
-                    board.grid[i][j].display = self.display
+                    board.grid[i][j].display = self.__display
 
     def erase(self, board):
-        for i in self.coordinates:
-            for j in self.coordinates[i]:
+        for i in self.__coordinates:
+            for j in self.__coordinates[i]:
                 board.grid[i][j].display = base_display
 
     def movey(self, y, board):
@@ -82,8 +82,8 @@ class Mandalorian(Character):
         ma = -1
         mi = rows + 10
 
-        for i in self.coordinates:
-            tmp[i + y] = self.coordinates[i]
+        for i in self.__coordinates:
+            tmp[i + y] = self.__coordinates[i]
             mi = min(mi, i + y)
             ma = max(ma, i + y)
 
@@ -91,16 +91,16 @@ class Mandalorian(Character):
             tmp = {}
             rr = 0
 
-            for i in self.coordinates:
-                tmp[rr] = self.coordinates[i]
+            for i in self.__coordinates:
+                tmp[rr] = self.__coordinates[i]
                 rr += 1
 
         if ma >= rows - 1:
             tmp = {}
             rr = rows - 3
 
-            for i in self.coordinates:
-                tmp[rr] = self.coordinates[i]
+            for i in self.__coordinates:
+                tmp[rr] = self.__coordinates[i]
                 rr += 1
 
             self.onGround = True
@@ -112,7 +112,7 @@ class Mandalorian(Character):
             self.onGround = True
 
         self.erase(board)
-        self.coordinates = tmp
+        self.__coordinates = tmp
         self.insert(board)
 
     def movex(self, x, board):
@@ -121,10 +121,10 @@ class Mandalorian(Character):
         last = -1
         first = columns + 10
 
-        for i in self.coordinates:
+        for i in self.__coordinates:
             tmp[i] = []
 
-            for j in self.coordinates[i]:
+            for j in self.__coordinates[i]:
                 tmp[i].append(j + x)
                 last = max(last, j + x)
                 first = min(first, j + x)
@@ -133,7 +133,7 @@ class Mandalorian(Character):
             tmp = {}
             rr = 0
 
-            for i in self.coordinates:
+            for i in self.__coordinates:
                 tmp[i] = []
 
                 if rr < 2:
@@ -149,7 +149,7 @@ class Mandalorian(Character):
             tmp = {}
             rr = 0
 
-            for i in self.coordinates:
+            for i in self.__coordinates:
                 tmp[i] = []
 
                 if rr < 2:
@@ -162,7 +162,7 @@ class Mandalorian(Character):
                 rr += 1
 
         self.erase(board)
-        self.coordinates = tmp
+        self.__coordinates = tmp
         self.insert(board)
 
     def free_fall(self, t, board):
@@ -180,9 +180,9 @@ class Mandalorian(Character):
 
         count = 0
 
-        for i in self.coordinates:
+        for i in self.__coordinates:
             count += 1
-            for j in self.coordinates[i]:
+            for j in self.__coordinates[i]:
                 if count == 2:
                     x = i
                     y = j

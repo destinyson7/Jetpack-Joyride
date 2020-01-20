@@ -7,48 +7,48 @@ beams = []
 class FireBeam:
     def __init__(self, x, y, angle, board, beam_cnt):
 
-        self.angle = angle
+        self.__angle = angle
 
-        if self.angle == [0, 1]:
-            self.display = Fore.YELLOW + '-' + Style.RESET_ALL
+        if self.__angle == [0, 1]:
+            self.__display = Fore.YELLOW + '-' + Style.RESET_ALL
 
-        elif self.angle == [1, 0]:
-            self.display = Fore.YELLOW + '|' + Style.RESET_ALL
+        elif self.__angle == [1, 0]:
+            self.__display = Fore.YELLOW + '|' + Style.RESET_ALL
 
-        elif self.angle == [1, 1]:
-            self.display = Fore.YELLOW + '\\' + Style.RESET_ALL
+        elif self.__angle == [1, 1]:
+            self.__display = Fore.YELLOW + '\\' + Style.RESET_ALL
 
         else:
-            self.display = Fore.YELLOW + '/' + Style.RESET_ALL
+            self.__display = Fore.YELLOW + '/' + Style.RESET_ALL
 
-        self.obstacle = True
-        self.present = True
-        self.start = [x, y]
-        self.beam_cnt = beam_cnt
+        self.__obstacle = True
+        self.__present = True
+        self.__start = [x, y]
+        self.__beam_cnt = beam_cnt
 
         # print(self.angle)
 
-        if self.angle == [0, 1]:
+        if self.__angle == [0, 1]:
             cur_beam_length = int(beam_length * 2.5)
 
         else:
             cur_beam_length = beam_length
 
-        board.grid[self.start[0]][self.start[1]].display = beam_end
-        board.grid[self.start[0]][self.start[1]].obstacle = True
-        board.grid[self.start[0]][self.start[1]].beam_number = beam_cnt
+        board.grid[self.__start[0]][self.__start[1]].display = beam_end
+        board.grid[self.__start[0]][self.__start[1]].obstacle = True
+        board.grid[self.__start[0]][self.__start[1]].beam_number = beam_cnt
 
         for i in range(cur_beam_length):
-            curx = self.start[0] + self.angle[0] * (i + 1)
-            cury = self.start[1] + self.angle[1] * (i + 1)
+            curx = self.__start[0] + self.__angle[0] * (i + 1)
+            cury = self.__start[1] + self.__angle[1] * (i + 1)
 
             if curx >= 0 and curx < rows and cury >= 0 and cury < columns:
-                board.grid[curx][cury].display = self.display
+                board.grid[curx][cury].display = self.__display
                 board.grid[curx][cury].obstacle = True
                 board.grid[curx][cury].beam_number = beam_cnt
 
-        curx = self.start[0] + self.angle[0] * (cur_beam_length + 1)
-        cury = self.start[1] + self.angle[1] * (cur_beam_length + 1)
+        curx = self.__start[0] + self.__angle[0] * (cur_beam_length + 1)
+        cury = self.__start[1] + self.__angle[1] * (cur_beam_length + 1)
 
         if curx >= 0 and curx < rows and cury >= 0 and cury < columns:
             board.grid[curx][cury].display = beam_end

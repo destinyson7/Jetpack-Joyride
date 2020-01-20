@@ -49,7 +49,7 @@ while True:
         for i in range(board.game_speed):
             mandalorian.movex(1, board)
 
-        for i in range(3*board.game_speed):
+        for i in range(4 * board.game_speed):
             Bullet.move(board, mandalorian)
         mandalorian.movey(0, board)
         board.show(mandalorian)

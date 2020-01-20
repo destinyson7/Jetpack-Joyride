@@ -7,29 +7,29 @@ bullets = []
 
 class Bullet:
     def __init__(self, x, y, bullet_number):
-        self.x = x
-        self.y = y
-        self.bullet_number = bullet_number
-        self.display = bullet_display
-        self.present = True
+        self.__x = x
+        self.__y = y
+        self.__bullet_number = bullet_number
+        self.__display = bullet_display
+        self.__present = True
 
         bullets.append(self)
 
     def erase(bullet_number, board):
 
         for i in bullets:
-            if i.bullet_number == bullet_number:
-                i.present = False
-                board.grid[i.x][i.y].display = base_display
+            if i.__bullet_number == bullet_number:
+                i.__present = False
+                board.grid[i.__x][i.__y].display = base_display
                 break
 
     def move(board, mandalorian):
 
         for i in bullets:
 
-            if i.present:
-                x = i.x
-                y = i.y
+            if i.__present:
+                x = i.__x
+                y = i.__y
 
                 if board.grid[x][y].isCoin:
                     display = coin_display
@@ -45,12 +45,13 @@ class Bullet:
                 y += 1
 
                 if y > (board.curPos + columnsAtATime):
-                    Bullet.erase(i.bullet_number, board)
+                    Bullet.erase(i.__bullet_number, board)
 
                 elif board.grid[x][y].obstacle:
                     FireBeam.erase(board.grid[x][y].beam_number, board)
-                    Bullet.erase(i.bullet_number, board)
+                    Bullet.erase(i.__bullet_number, board)
+                    mandalorian.score += 10
 
                 else:
                     board.grid[x][y].display = bullet_display
-                    i.y += 1
+                    i.__y += 1

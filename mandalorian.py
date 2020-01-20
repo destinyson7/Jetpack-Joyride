@@ -19,7 +19,7 @@ class Mandalorian(Character):
         self.shield = False
 
     def flash(self):
-        # time.sleep(0.25)
+        # time.sleep(0.5)
 
         pr = ""
         pr += "\033[0;0H"
@@ -48,12 +48,6 @@ class Mandalorian(Character):
                         board.show(self)
                         time.sleep(0.5)
                         self.flash()
-
-                    # for a in range(rows):
-                    #     for b in range(board.curPos, board.curPos + columnsAtATime):
-                    #         if board.grid[a][b].obstacle:
-                    #             board.grid[a][b].obstacle = False
-                    #             board.grid[a][b].display = base_display
 
         for i in self.coordinates:
             for j in self.coordinates[i]:
@@ -127,8 +121,6 @@ class Mandalorian(Character):
                 tmp[i].append(j + x)
                 last = max(last, j + x)
                 first = min(first, j + x)
-
-        # print(first, last, "###" + str(board.curPos) + "###")
 
         if last >= (board.curPos + columnsAtATime - 1):
             tmp = {}

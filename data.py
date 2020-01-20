@@ -13,4 +13,5 @@ beam_end = Back.YELLOW + ' ' + Style.RESET_ALL
 boost_display = Back.BLACK + '>' + Style.RESET_ALL
 boost_length = 200
 shield_length = 100
-shield_cooloff = 200
+shield_cooloff = 600
+bullet_display = Fore.RED + 'O' + Style.RESET_ALL

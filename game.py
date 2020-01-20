@@ -84,7 +84,10 @@ while True:
             board.shield_cnt = shield_length
             board.shield_cooloff = 0
 
+            # TODO: change display of mando
+
     if mandalorian.lives <= 0:
+        # TODO: display game over screen
         break
 
     board.show(mandalorian)

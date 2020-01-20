@@ -11,9 +11,9 @@ from boost import Boost
 class Board:
 
     def __init__(self, rows, columns, columnsAtATime):
-        self.rows = rows
-        self.columns = columns
-        self.columnsAtATime = columnsAtATime
+        self.__rows = rows
+        self.__columns = columns
+        self.__columnsAtATime = columnsAtATime
         self.curPos = 0
         self.game_speed = 1
         self.speed_cnt = 0
@@ -25,11 +25,11 @@ class Board:
 
         self.grid = []
 
-        for i in range(self.rows):
+        for i in range(self.__rows):
 
             tmp = []
 
-            for j in range(self.columns):
+            for j in range(self.__columns):
                 tmp.append(Base())
 
             self.grid.append(tmp)
@@ -47,7 +47,7 @@ class Board:
             "Score: " + str(mandalorian.score) + "\n"
 
         start = self.curPos
-        end = start + self.columnsAtATime
+        end = start + self.__columnsAtATime
 
         for i in range(2):
             pr += border_display * 3
@@ -58,7 +58,7 @@ class Board:
             pr += border_display * 3
             pr += "\n"
 
-        for i in range(self.rows):
+        for i in range(self.__rows):
             pr += border_display * 3
 
             for j in range(start, end):

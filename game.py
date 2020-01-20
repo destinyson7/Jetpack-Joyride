@@ -8,6 +8,7 @@ from getch import _getChUnix as getChar
 from input import *
 from data import *
 import sys
+from bullet import Bullet
 
 sys.stderr.write("\x1b[2J\x1b[H")
 # Code for clear screen in UNIX machines
@@ -44,8 +45,12 @@ while True:
     if cur - prev >= shift:
         prev = cur
         board.curPos += 1 * board.game_speed
+
         for i in range(board.game_speed):
             mandalorian.movex(1, board)
+
+        for i in range(3*board.game_speed):
+            Bullet.move(board, mandalorian)
         mandalorian.movey(0, board)
         board.show(mandalorian)
 
@@ -85,6 +90,9 @@ while True:
             board.shield_cooloff = 0
 
             # TODO: change display of mando
+
+    elif char == 'r' or char == 'R':
+        mandalorian.generate_bullet()
 
     if mandalorian.lives <= 0:
         # TODO: display game over screen

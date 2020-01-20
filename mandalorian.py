@@ -5,6 +5,7 @@ import math
 from fire_beam import *
 import time
 from boost import Boost
+from bullet import Bullet
 
 
 class Mandalorian(Character):
@@ -17,6 +18,7 @@ class Mandalorian(Character):
             27: [24, 26]
         }
         self.shield = False
+        self.bullet_number = 0
 
     def flash(self):
         # time.sleep(0.5)
@@ -57,10 +59,10 @@ class Mandalorian(Character):
                     board.grid[i][j].isCoin = False
 
                 elif board.grid[i][j].isBoost:
+                    Boost.erase(board.grid[i][j].boost_number, board)
+
                     board.game_speed = min(1 + board.game_speed, 2)
                     board.speed_cnt = boost_length
-
-                    Boost.erase(board.grid[i][j].boost_number, board)
 
                 board.grid[i][j].display = self.display
 
@@ -168,3 +170,22 @@ class Mandalorian(Character):
 
         for i in range(y):
             self.movey(1, board)
+
+    def generate_bullet(self):
+
+        count = 0
+
+        for i in self.coordinates:
+            count += 1
+            for j in self.coordinates[i]:
+                if count == 2:
+                    x = i
+                    y = j
+
+                    break
+
+            if count == 2:
+                break
+
+        Bullet(x, y, self.bullet_number)
+        self.bullet_number += 1

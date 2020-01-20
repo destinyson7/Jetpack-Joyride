@@ -14,4 +14,5 @@ boost_display = Back.BLACK + '>' + Style.RESET_ALL
 boost_length = 200
 shield_length = 100
 shield_cooloff = 600
-bullet_display = Fore.RED + 'O' + Style.RESET_ALL
+bullet_display = Fore.WHITE + 'O' + Style.RESET_ALL
+coin_display = Fore.CYAN + '$' + Style.RESET_ALL

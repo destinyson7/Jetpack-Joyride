@@ -4,7 +4,7 @@ from data import *
 
 class Coin:
     def __init__(self, x, y, board, number_of_coins):
-        self.display = Fore.CYAN + '$' + Style.RESET_ALL
+        self.display = coin_display
         self.present = True
         self.start = [x, y]
         self.number_of_coins = number_of_coins

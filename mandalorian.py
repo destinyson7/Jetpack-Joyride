@@ -12,6 +12,7 @@ class Mandalorian(Character):
     def __init__(self):
         Character.__init__(self)
         self.display = mando_display
+        self.shield_display = shield_display
         self.coordinates = {
             25: [25],
             26: [25],
@@ -64,7 +65,11 @@ class Mandalorian(Character):
                     board.game_speed = min(1 + board.game_speed, 2)
                     board.speed_cnt = boost_length
 
-                board.grid[i][j].display = self.display
+                if self.shield:
+                    board.grid[i][j].display = self.shield_display
+
+                else:
+                    board.grid[i][j].display = self.display
 
     def erase(self, board):
         for i in self.coordinates:

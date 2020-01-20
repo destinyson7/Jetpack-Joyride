@@ -89,8 +89,6 @@ while True:
             board.shield_cnt = shield_length
             board.shield_cooloff = 0
 
-            # TODO: change display of mando
-
     elif char == 'r' or char == 'R':
         mandalorian.generate_bullet()
 

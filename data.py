@@ -16,3 +16,4 @@ shield_length = 100
 shield_cooloff = 600
 bullet_display = Fore.WHITE + 'O' + Style.RESET_ALL
 coin_display = Fore.CYAN + '$' + Style.RESET_ALL
+shield_display = Back.BLUE + ' ' + Style.RESET_ALL

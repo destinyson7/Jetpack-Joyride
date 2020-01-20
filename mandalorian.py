@@ -16,6 +16,7 @@ class Mandalorian(Character):
             26: [25],
             27: [24, 26]
         }
+        self.shield = False
 
     def flash(self):
         # time.sleep(0.25)
@@ -25,7 +26,8 @@ class Mandalorian(Character):
         pri = " " * (columnsAtATime + 10)
         pri += "\n"
         pr += pri * (16)
-        pr += (Back.BLACK + " " + Style.RESET_ALL) * (int)(columnsAtATime / 2 - 3) + Fore.GREEN + "Lives Remaining: " + str(self.lives) + Style.RESET_ALL + "\n"
+        pr += (Back.BLACK + " " + Style.RESET_ALL) * (int)(columnsAtATime / 2 - 3) + \
+            Fore.GREEN + "Lives Remaining: " + str(self.lives) + Style.RESET_ALL + "\n"
         pr += pri * (rows - 6)
 
         print(pr)
@@ -36,14 +38,16 @@ class Mandalorian(Character):
         for i in self.coordinates:
             for j in self.coordinates[i]:
                 if board.grid[i][j].obstacle:
-                    self.lives -= 1
+                    if not self.shield:
+                        self.lives -= 1
 
                     FireBeam.erase(board.grid[i][j].beam_number, board)
 
-                    self.flash()
-                    board.show(self)
-                    time.sleep(0.5)
-                    self.flash()
+                    if not self.shield:
+                        self.flash()
+                        board.show(self)
+                        time.sleep(0.5)
+                        self.flash()
 
                     # for a in range(rows):
                     #     for b in range(board.curPos, board.curPos + columnsAtATime):

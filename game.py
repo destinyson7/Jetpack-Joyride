@@ -28,10 +28,16 @@ t = 0
 while True:
 
     iteration += 1
-    board.speed_cnt -= 1
+    board.speed_cnt = max(board.speed_cnt - 1, 0)
+    board.shield_cnt = max(board.shield_cnt - 1, 0)
 
     if board.speed_cnt == 0:
         board.game_speed = 1
+
+    if board.shield_cnt == 0:
+        mandalorian.shield = False
+        board.shield_cooloff += 1
+
     # print("iter:", iteration)
 
     cur = time.time()
@@ -70,6 +76,13 @@ while True:
 
     elif char == 'q' or char == 'Q':
         break
+
+    elif char == ' ':
+
+        if board.shield_cooloff >= shield_cooloff:
+            mandalorian.shield = True
+            board.shield_cnt = shield_length
+            board.shield_cooloff = 0
 
     if mandalorian.lives <= 0:
         break

@@ -17,6 +17,8 @@ class Board:
         self.curPos = 0
         self.game_speed = 1
         self.speed_cnt = 0
+        self.shield_cnt = 0
+        self.shield_cooloff = shield_cooloff
 
     def insert(self):
         # self.grid = np.full((self.rows, self.columns), Base())
@@ -41,7 +43,8 @@ class Board:
         pr += "\033[0;0H"
         pr += "\n" * 4
 
-        pr += "Lives Remaining: " + str(mandalorian.lives) + "\t" + "Score: " + str(mandalorian.score) + "\n"
+        pr += "Lives Remaining: " + str(mandalorian.lives) + "\t" + \
+            "Score: " + str(mandalorian.score) + "\n"
 
         start = self.curPos
         end = start + self.columnsAtATime

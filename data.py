@@ -12,3 +12,5 @@ angles = [[1, 0], [1, 1], [0, 1], [1, -1]]
 beam_end = Back.YELLOW + ' ' + Style.RESET_ALL
 boost_display = Back.BLACK + '>' + Style.RESET_ALL
 boost_length = 200
+shield_length = 100
+shield_cooloff = 200

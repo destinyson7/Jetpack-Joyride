@@ -62,7 +62,7 @@ class Mandalorian(Character):
                 elif board.grid[i][j].isBoost:
                     Boost.erase(board.grid[i][j].boost_number, board)
 
-                    board.game_speed = min(1 + board.game_speed, 2)
+                    board.game_speed = min(2 + board.game_speed, 3)
                     board.speed_cnt = boost_length
 
                 if self.shield:
@@ -168,7 +168,7 @@ class Mandalorian(Character):
     def free_fall(self, t, board):
 
         y = (t * t) * 9.8
-        y = y / 1000
+        y = y / 10000
         y = y / 5
 
         y = math.ceil(y)

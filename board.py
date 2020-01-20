@@ -82,7 +82,7 @@ class Board:
 
         beam_cnt = 0
 
-        for j in range(45, columns - beam_length - 3, 50):
+        for j in range(85, columns - beam_length - 3, 50):
             x = random.randint(0, rows - 3 - beam_length)
             y = j + random.randint(0, 25)
 
@@ -95,7 +95,7 @@ class Board:
 
     def generate_coins(self):
 
-        for j in range(48, columns - 2, 29):
+        for j in range(78, columns - 2, 29):
             x = random.randint(0, rows - 2)
             y = j + random.randint(0, 15)
 
@@ -109,7 +109,7 @@ class Board:
 
         boost_cnt = 0
 
-        for j in range(132, columns - 8, 79):
+        for j in range(202, columns - 8, 109):
             x = random.randint(0, rows - 8)
             y = j + random.randint(0, 15)
 

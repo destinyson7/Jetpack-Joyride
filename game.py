@@ -73,10 +73,12 @@ while True:
     if char != 'w' and char != 'W':
         for i in range(board.game_speed):
             mandalorian.free_fall(t, board)
+            boss.move(board, mandalorian)
 
     if char == 'w' or char == 'W':
         for i in range(board.game_speed):
             mandalorian.movey(-1, board)
+            boss.move(board, mandalorian)
         t = 0
 
     elif char == 'a' or char == 'A':

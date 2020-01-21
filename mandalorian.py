@@ -20,6 +20,7 @@ class Mandalorian(Character):
         }
         self.shield = False
         self.bullet_number = 0
+        self.centre = 26
 
     def flash(self):
         # time.sleep(0.5)
@@ -53,7 +54,14 @@ class Mandalorian(Character):
                         time.sleep(0.5)
                         self.flash()
 
+        centre_cnt = 0
+
         for i in self.__coordinates:
+            centre_cnt += 1
+
+            if centre_cnt == 2:
+                self.centre = i
+
             for j in self.__coordinates[i]:
 
                 if board.grid[i][j].isCoin:
@@ -72,10 +80,13 @@ class Mandalorian(Character):
                 else:
                     board.grid[i][j].display = self.__display
 
+                board.grid[i][j].isPlayer = True
+
     def erase(self, board):
         for i in self.__coordinates:
             for j in self.__coordinates[i]:
                 board.grid[i][j].display = base_display
+                board.grid[i][j].isPlayer = False
 
     def movey(self, y, board):
         tmp = {}

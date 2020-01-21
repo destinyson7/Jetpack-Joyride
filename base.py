@@ -10,3 +10,5 @@ class Base:
         self.isCoin = False
         self.isBoost = False
         self.boost_number = -1
+        self.isPlayer = False
+        self.isEnemy = False

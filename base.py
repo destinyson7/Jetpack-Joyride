@@ -12,3 +12,6 @@ class Base:
         self.boost_number = -1
         self.isPlayer = False
         self.isEnemy = False
+        self.isBullet = False
+        self.bullet_num = -1
+        self.isIceBall = False

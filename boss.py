@@ -58,7 +58,8 @@ class Boss(Character):
                 board.grid[i][j].display = Back.BLACK + Fore.BLUE + Style.BRIGHT + \
                     self.__display[x][y] + Style.RESET_ALL
 
-                board.grid[i][j].isEnemy = True
+                if self.__display[x][y] != ' ':
+                    board.grid[i][j].isEnemy = True
 
                 y += 1
 

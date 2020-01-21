@@ -36,7 +36,7 @@ class Board:
 
         self.grid = np.array(self.grid)
 
-    def show(self, mandalorian):
+    def show(self, mandalorian, boss):
 
         pr = ""
 
@@ -44,7 +44,13 @@ class Board:
         pr += "\n" * 4
 
         pr += "Lives: " + Fore.RED + "❤ " * mandalorian.lives + \
-            Style.RESET_ALL + "\t" + "Score: " + str(mandalorian.score) + "\n"
+            Style.RESET_ALL + "\t" + "Score: " + str(mandalorian.score)
+
+        if self.curPos >= columns - columnsAtATime:
+            pr += "\t\t\t" + "Boss Lives: " + str(boss.lives) + "  " + "\n"
+
+        else:
+            pr += "\n"
 
         start = min(self.curPos, columns - columnsAtATime)
         end = start + self.__columnsAtATime

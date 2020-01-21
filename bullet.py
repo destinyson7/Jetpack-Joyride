@@ -22,6 +22,7 @@ class Bullet:
             if i.__bullet_number == bullet_number:
                 i.__present = False
                 board.grid[i.__x][i.__y].display = base_display
+                board.grid[i.__x][i.__y].isBullet = False
                 break
 
     def move(board, mandalorian, boss):
@@ -42,6 +43,7 @@ class Bullet:
                     display = base_display
 
                 board.grid[x][y].display = display
+                board.grid[x][y].isBullet = False
 
                 y += 1
 
@@ -59,6 +61,9 @@ class Bullet:
 
                     Bullet.erase(i.__bullet_number, board)
 
+                elif board.grid[x][y].isIceBall:
+                    Bullet.erase(i.__bullet_number, board)
+
                 elif board.grid[x][y].obstacle:
                     FireBeam.erase(board.grid[x][y].beam_number, board)
                     Bullet.erase(i.__bullet_number, board)
@@ -66,4 +71,6 @@ class Bullet:
 
                 else:
                     board.grid[x][y].display = bullet_display
+                    board.grid[x][y].isBullet = True
+                    board.grid[x][y].bullet_num = i.__bullet_number
                     i.__y += 1

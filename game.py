@@ -69,12 +69,12 @@ while True:
             Bullet.move(board, mandalorian, boss)
 
         if board.curPos >= (columns - columnsAtATime - 1):
-            for i in range(3 * board.game_speed):
+            for i in range(4 * board.game_speed):
                 IceBall.move(board, mandalorian, boss)
 
         mandalorian.movey(0, board)
 
-        board.show(mandalorian)
+        board.show(mandalorian, boss)
 
     char = user_input()
 
@@ -119,4 +119,4 @@ while True:
         # TODO: display game over screen
         break
 
-    board.show(mandalorian)
+    board.show(mandalorian, boss)

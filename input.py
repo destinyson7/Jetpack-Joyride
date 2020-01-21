@@ -9,7 +9,7 @@ def alarmhandler(signum, frame):
     raise AlarmException
 
 
-def user_input(timeout=shift):
+def user_input(timeout=0.15):
     ''' input method '''
     signal.signal(signal.SIGALRM, alarmhandler)
     signal.setitimer(signal.ITIMER_REAL, timeout)

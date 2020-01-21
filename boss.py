@@ -1,17 +1,19 @@
 from character import Character
 from colorama import Fore, Back, Style
 from data import *
+from ice_ball import IceBall
 
 
 class Boss(Character):
     def __init__(self):
         Character.__init__(self)
 
-        self.lives = 5
+        self.lives = 10
 
         self.__coordinates = {}
         self.__display = []
         self.__centre = 18
+        self.__ice_ball_number = 0
 
         for i in range(13, 24):
             self.__coordinates[i] = []
@@ -42,7 +44,13 @@ class Boss(Character):
     def insert(self, board):
 
         x = 0
+        centre_cnt = 0
         for i in self.__coordinates:
+            centre_cnt += 1
+
+            if centre_cnt == 6:
+                self.__centre = i
+
             y = 0
 
             for j in self.__coordinates[i]:
@@ -60,7 +68,7 @@ class Boss(Character):
         start = max(0, self.__centre + y - 5)
         start = min(start, rows - 11)
 
-        print(start)
+        # print(start)
 
         tmp = {}
 
@@ -79,3 +87,14 @@ class Boss(Character):
         y = mandalorian.centre - self.__centre
         # print(mandalorian.centre, self.__centre)
         self.movey(y, board)
+
+    def generate_ice_balls(self):
+
+        IceBall(self.__centre - 4, columns - 34, self.__ice_ball_number)
+        self.__ice_ball_number += 1
+
+        IceBall(self.__centre, columns - 24, self.__ice_ball_number)
+        self.__ice_ball_number += 1
+
+        IceBall(self.__centre + 4, columns - 23, self.__ice_ball_number)
+        self.__ice_ball_number += 1

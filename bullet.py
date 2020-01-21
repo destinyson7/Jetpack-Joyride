@@ -1,6 +1,7 @@
 from colorama import Fore, Back, Style
 from data import *
 from fire_beam import *
+import sys
 
 bullets = []
 
@@ -23,7 +24,7 @@ class Bullet:
                 board.grid[i.__x][i.__y].display = base_display
                 break
 
-    def move(board, mandalorian):
+    def move(board, mandalorian, boss):
 
         for i in bullets:
 
@@ -48,6 +49,14 @@ class Bullet:
                     Bullet.erase(i.__bullet_number, board)
 
                 elif y > (board.curPos + columnsAtATime):
+                    Bullet.erase(i.__bullet_number, board)
+
+                elif board.grid[x][y].isEnemy:
+                    boss.lives -= 1
+
+                    if boss.lives <= 0:
+                        sys.exit(0)
+
                     Bullet.erase(i.__bullet_number, board)
 
                 elif board.grid[x][y].obstacle:

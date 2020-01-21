@@ -21,6 +21,7 @@ class Mandalorian(Character):
         self.shield = False
         self.bullet_number = 0
         self.centre = 26
+        # self.lives = 50
 
     def flash(self):
         # time.sleep(0.5)

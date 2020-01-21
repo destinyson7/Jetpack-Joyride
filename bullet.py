@@ -44,7 +44,10 @@ class Bullet:
 
                 y += 1
 
-                if y > (board.curPos + columnsAtATime):
+                if y == columns - 1:
+                    Bullet.erase(i.__bullet_number, board)
+
+                elif y > (board.curPos + columnsAtATime):
                     Bullet.erase(i.__bullet_number, board)
 
                 elif board.grid[x][y].obstacle:

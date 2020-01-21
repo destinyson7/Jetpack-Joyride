@@ -46,7 +46,7 @@ class Board:
         pr += "Lives: " + Fore.RED + "❤ " * mandalorian.lives + \
             Style.RESET_ALL + "\t" + "Score: " + str(mandalorian.score) + "\n"
 
-        start = self.curPos
+        start = min(self.curPos, columns - columnsAtATime)
         end = start + self.__columnsAtATime
 
         for i in range(2):
@@ -82,7 +82,7 @@ class Board:
 
         beam_cnt = 0
 
-        for j in range(85, columns - beam_length - 25, 50):
+        for j in range(85, columns - columnsAtATime, 50):
             x = random.randint(0, rows - 3 - beam_length)
             y = j + random.randint(0, 25)
 
@@ -95,7 +95,7 @@ class Board:
 
     def generate_coins(self):
 
-        for j in range(78, columns - 20, 29):
+        for j in range(78, columns - columnsAtATime, 29):
             x = random.randint(0, rows - 2)
             y = j + random.randint(0, 15)
 
@@ -109,7 +109,7 @@ class Board:
 
         boost_cnt = 0
 
-        for j in range(202, columns - 20, 109):
+        for j in range(143, columns - columnsAtATime, 109):
             x = random.randint(0, rows - 8)
             y = j + random.randint(0, 15)
 

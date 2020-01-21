@@ -9,6 +9,7 @@ from input import *
 from data import *
 import sys
 from bullet import Bullet
+from boss import Boss
 
 sys.stderr.write("\x1b[2J\x1b[H")
 # Code for clear screen in UNIX machines
@@ -21,6 +22,9 @@ board.generate_boosts()
 
 mandalorian = Mandalorian()
 mandalorian.insert(board)
+
+boss = Boss()
+boss.insert(board)
 
 prev = time.time()
 iteration = 0
@@ -46,8 +50,12 @@ while True:
         prev = cur
         board.curPos += 1 * board.game_speed
 
-        for i in range(board.game_speed):
-            mandalorian.movex(1, board)
+        if board.curPos < (columns - columnsAtATime):
+            for i in range(board.game_speed):
+                mandalorian.movex(1, board)
+
+        else:
+            board.curPos = columns - columnsAtATime
 
         for i in range(4 * board.game_speed):
             Bullet.move(board, mandalorian)

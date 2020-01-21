@@ -83,7 +83,6 @@ while True:
         break
 
     elif char == ' ':
-
         if board.shield_cooloff >= shield_cooloff:
             mandalorian.shield = True
             board.shield_cnt = shield_length

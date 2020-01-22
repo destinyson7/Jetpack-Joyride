@@ -11,6 +11,7 @@ import sys
 from bullet import Bullet
 from boss import Boss
 from ice_ball import IceBall
+from magnet import Magnet
 
 sys.stderr.write("\x1b[2J\x1b[H")
 # Code for clear screen in UNIX machines
@@ -20,6 +21,7 @@ board.insert()
 board.generate_beams()
 board.generate_coins()
 board.generate_boosts()
+board.generate_magnets()
 
 boss = Boss()
 boss.insert(board)
@@ -46,6 +48,7 @@ while True:
         board.shield_cooloff += 1
 
     # print("iter:", iteration)
+    flag = False
 
     cur = time.time()
     if cur - prev >= shift:
@@ -71,6 +74,9 @@ while True:
             if board.curPos >= (columns - columnsAtATime - 41):
                 IceBall.move(board, mandalorian, boss)
 
+        for i in range(board.game_speed):
+            flag = Magnet.attract(board, mandalorian, boss)
+
         mandalorian.movey(0, board, boss)
 
         board.show(mandalorian, boss)
@@ -83,10 +89,14 @@ while True:
     else:
         t += 1
 
-    if char != 'w' and char != 'W':
-        for i in range(board.game_speed):
-            mandalorian.free_fall(t, board, boss)
-            boss.move(board, mandalorian)
+    if not flag:
+        if char != 'w' and char != 'W':
+            for i in range(board.game_speed):
+                mandalorian.free_fall(t, board, boss)
+                boss.move(board, mandalorian)
+
+    else:
+        t = 0
 
     if char == 'w' or char == 'W':
         for i in range(board.game_speed):

@@ -24,6 +24,14 @@ class Mandalorian(Character):
         # self.lives = 50
 
     @property
+    def coordinates(self):
+        return self.__coordinates
+
+    @coordinates.setter
+    def coordinates(self, coordinates):
+        self.__coordinates = coordinates
+
+    @property
     def shield(self):
         return self.__shield
 

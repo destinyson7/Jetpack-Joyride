@@ -6,6 +6,7 @@ import random
 from fire_beam import FireBeam
 from coin import Coin
 from boost import Boost
+from magnet import Magnet
 
 
 class Board:
@@ -162,3 +163,15 @@ class Board:
             Boost(x, y, self, boost_cnt)
 
             boost_cnt += 1
+
+    def generate_magnets(self):
+
+        magnet_cnt = 0
+
+        for j in range(200, columns - columnsAtATime - 25, 401):
+            x = random.randint(0, rows - 5)
+            y = j + random.randint(0, 15)
+
+            Magnet(x, y, self, magnet_cnt)
+
+            magnet_cnt += 1

@@ -4,6 +4,30 @@ from base import Base
 class Character(Base):
     def __init__(self):
         Base.__init__(self)
-        self.score = 0
-        self.lives = 3
-        self.onGround = False
+        self.__score = 0
+        self.__lives = 3
+        self.__onGround = False
+
+    @property
+    def score(self):
+        return self.__score
+
+    @score.setter
+    def score(self, score):
+        self.__score = score
+
+    @property
+    def lives(self):
+        return self.__lives
+
+    @lives.setter
+    def lives(self, lives):
+        self.__lives = lives
+
+    @property
+    def onGround(self):
+        return self.__onGround
+
+    @onGround.setter
+    def onGround(self, onGround):
+        self.__onGround = onGround

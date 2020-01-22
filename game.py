@@ -21,11 +21,11 @@ board.generate_beams()
 board.generate_coins()
 board.generate_boosts()
 
-mandalorian = Mandalorian()
-mandalorian.insert(board)
-
 boss = Boss()
 boss.insert(board)
+
+mandalorian = Mandalorian()
+mandalorian.insert(board, boss)
 
 prev = time.time()
 prev_ball = prev
@@ -60,7 +60,7 @@ while True:
 
         if board.curPos < (columns - columnsAtATime):
             for i in range(board.game_speed):
-                mandalorian.movex(1, board)
+                mandalorian.movex(1, board, boss)
 
         else:
             board.curPos = columns - columnsAtATime
@@ -71,7 +71,7 @@ while True:
             if board.curPos >= (columns - columnsAtATime - 41):
                 IceBall.move(board, mandalorian, boss)
 
-        mandalorian.movey(0, board)
+        mandalorian.movey(0, board, boss)
 
         board.show(mandalorian, boss)
 
@@ -85,22 +85,22 @@ while True:
 
     if char != 'w' and char != 'W':
         for i in range(board.game_speed):
-            mandalorian.free_fall(t, board)
+            mandalorian.free_fall(t, board, boss)
             boss.move(board, mandalorian)
 
     if char == 'w' or char == 'W':
         for i in range(board.game_speed):
-            mandalorian.movey(-1, board)
+            mandalorian.movey(-1, board, boss)
             boss.move(board, mandalorian)
         t = 0
 
     elif char == 'a' or char == 'A':
         for i in range(board.game_speed):
-            mandalorian.movex(-1, board)
+            mandalorian.movex(-1, board, boss)
 
     elif char == 'd' or char == 'D':
         for i in range(board.game_speed):
-            mandalorian.movex(1, board)
+            mandalorian.movex(1, board, boss)
 
     elif char == 'q' or char == 'Q':
         break

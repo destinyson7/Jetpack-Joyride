@@ -14,9 +14,17 @@ class IceBall:
 
         self.__start = [x, y]
 
-        self.display = ['<', '-', '-']
+        self.__display = ['<', '-', '-']
 
         ice_balls.append(self)
+
+    @property
+    def display(self):
+        return self.__display
+
+    @display.setter
+    def display(self, display):
+        self.__display = display
 
     def erase(ice_ball_number, board):
 

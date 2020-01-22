@@ -56,7 +56,7 @@ class Board:
     def shield_cooloff(self):
         return self.__shield_cooloff
 
-    @shield_cnt.setter
+    @shield_cooloff.setter
     def shield_cooloff(self, shield_cooloff):
         self.__shield_cooloff = shield_cooloff
 

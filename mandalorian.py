@@ -18,10 +18,34 @@ class Mandalorian(Character):
             26: [25],
             27: [24, 26]
         }
-        self.shield = False
-        self.bullet_number = 0
-        self.centre = 26
+        self.__shield = False
+        self.__bullet_number = 0
+        self.__centre = 26
         # self.lives = 50
+
+    @property
+    def shield(self):
+        return self.__shield
+
+    @shield.setter
+    def shield(self, shield):
+        self.__shield = shield
+
+    @property
+    def bullet_number(self):
+        return self.__bullet_number
+
+    @bullet_number.setter
+    def bullet_number(self, bullet_number):
+        self.__bullet_number = bullet_number
+
+    @property
+    def centre(self):
+        return self.__centre
+
+    @centre.setter
+    def centre(self, centre):
+        self.__centre = centre
 
     def flash(self):
         # time.sleep(0.5)
@@ -40,7 +64,7 @@ class Mandalorian(Character):
 
         time.sleep(0.5)
 
-    def insert(self, board):
+    def insert(self, board, boss):
         for i in self.__coordinates:
             for j in self.__coordinates[i]:
                 if board.grid[i][j].obstacle:
@@ -51,7 +75,7 @@ class Mandalorian(Character):
 
                     if not self.shield:
                         self.flash()
-                        board.show(self)
+                        board.show(self, boss)
                         time.sleep(0.5)
                         self.flash()
 
@@ -89,7 +113,7 @@ class Mandalorian(Character):
                 board.grid[i][j].display = base_display
                 board.grid[i][j].isPlayer = False
 
-    def movey(self, y, board):
+    def movey(self, y, board, boss):
         tmp = {}
 
         ma = -1
@@ -126,9 +150,9 @@ class Mandalorian(Character):
 
         self.erase(board)
         self.__coordinates = tmp
-        self.insert(board)
+        self.insert(board, boss)
 
-    def movex(self, x, board):
+    def movex(self, x, board, boss):
         tmp = {}
 
         last = -1
@@ -176,9 +200,9 @@ class Mandalorian(Character):
 
         self.erase(board)
         self.__coordinates = tmp
-        self.insert(board)
+        self.insert(board, boss)
 
-    def free_fall(self, t, board):
+    def free_fall(self, t, board, boss):
 
         y = (t * t) * 9.8
         y = y / 1000
@@ -186,7 +210,7 @@ class Mandalorian(Character):
         y = math.ceil(y)
 
         for i in range(y):
-            self.movey(1, board)
+            self.movey(1, board, boss)
 
     def generate_bullet(self):
 

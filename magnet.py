@@ -46,6 +46,9 @@ class Magnet:
 
                 xx += 1
 
+        else:
+            self.__present = False
+
         magnets.append(self)
 
     def show(self, board):
@@ -66,33 +69,36 @@ class Magnet:
         flag = False
 
         for i in magnets:
-            if i.__start[1] >= board.curPos and i.__start[1] < (board.curPos + columnsAtATime):
 
-                flag = True
+            if i.__present:
 
-                mando_pos = list(mandalorian.coordinates.keys())
-                mando_pos.sort()
-                x = mando_pos[1]
-                y = mandalorian.coordinates[x][0]
+                if i.__start[1] >= board.curPos and i.__start[1] < (board.curPos + columnsAtATime):
 
-                # print(x, y, i.__start[0], i.__start[1])
+                    flag = True
 
-                if x < i.__start[0]:
-                    for j in range(2):
-                        mandalorian.movey(1, board, boss, first_time)
+                    mando_pos = list(mandalorian.coordinates.keys())
+                    mando_pos.sort()
+                    x = mando_pos[1]
+                    y = mandalorian.coordinates[x][0]
 
-                elif x > i.__start[0]:
-                    for j in range(2):
-                        mandalorian.movey(-1, board, boss, first_time)
+                    # print(x, y, i.__start[0], i.__start[1])
 
-                if y < i.__start[1]:
-                    for j in range(2):
-                        mandalorian.movex(1, board, boss, first_time)
+                    if x < i.__start[0]:
+                        for j in range(2):
+                            mandalorian.movey(1, board, boss, first_time)
 
-                elif y > i.__start[1]:
-                    for j in range(2):
-                        mandalorian.movex(-1, board, boss, first_time)
+                    elif x > i.__start[0]:
+                        for j in range(2):
+                            mandalorian.movey(-1, board, boss, first_time)
 
-            i.show(board)
+                    if y < i.__start[1]:
+                        for j in range(2):
+                            mandalorian.movex(1, board, boss, first_time)
+
+                    elif y > i.__start[1]:
+                        for j in range(2):
+                            mandalorian.movex(-1, board, boss, first_time)
+
+                i.show(board)
 
         return flag

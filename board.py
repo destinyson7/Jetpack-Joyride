@@ -95,7 +95,7 @@ class Board:
         time_remaining = int(max_time - (time.time() - first_time))
 
         if time_remaining <= 0:
-            sys.exit(0)
+            mandalorian.game_over()
 
         pr += "\t\t\t" + "Time Remaining: " + str(time_remaining).zfill(3)
 

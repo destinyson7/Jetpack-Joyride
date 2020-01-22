@@ -55,9 +55,11 @@ class Bullet:
 
                 elif board.grid[x][y].isEnemy:
                     boss.lives -= 1
+                    mandalorian.score += 15
 
                     if boss.lives <= 0:
-                        sys.exit(0)
+                        boss.game_over(mandalorian)
+                        # sys.exit(0)
 
                     Bullet.erase(i.__bullet_number, board)
 

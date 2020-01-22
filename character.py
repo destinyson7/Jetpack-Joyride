@@ -5,7 +5,7 @@ class Character(Base):
     def __init__(self):
         Base.__init__(self)
         self.__score = 0
-        self.__lives = 3
+        self.__lives = 1
         self.__onGround = False
 
     @property

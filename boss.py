@@ -2,6 +2,8 @@ from character import Character
 from colorama import Fore, Back, Style
 from data import *
 from ice_ball import IceBall
+import os
+import sys
 
 
 class Boss(Character):
@@ -27,6 +29,15 @@ class Boss(Character):
             for i in pic:
                 self.__display.append(list(i))
                 # print(len(list(i)))
+
+        self.__game_over_display = []
+
+        with open('win.txt', 'r') as f:
+            pic = f.readlines()
+
+            for i in pic:
+                # print(i)
+                self.__game_over_display.append(list(i))
 
     def erase(self, board):
         x = 0
@@ -99,3 +110,31 @@ class Boss(Character):
 
         IceBall(self.__centre + 4, columns - 23, self.__ice_ball_number)
         self.__ice_ball_number += 1
+
+    def game_over(self, mandalorian):
+
+        os.system('clear')
+
+        pr = ""
+
+        pr += (Back.BLACK + Style.BRIGHT + "\n" + Style.RESET_ALL) * 11
+
+        for i in range(len(self.__game_over_display)):
+            for j in range(len(self.__game_over_display[i])):
+
+                pr += Fore.GREEN + Style.BRIGHT + \
+                    self.__game_over_display[i][j] + Style.RESET_ALL
+
+            # pr += "\n"
+
+        pr += (Back.BLACK + Style.BRIGHT + "\n" + Style.RESET_ALL) * 12
+
+        pr += "\t" * 12 + Fore.YELLOW + Style.BRIGHT + \
+            "Your Score: " + str(mandalorian.score) + Style.RESET_ALL
+
+        pr += (Back.BLACK + Style.BRIGHT + "\n" + Style.RESET_ALL) * 5
+
+        print(pr)
+
+        # time.sleep(2)
+        sys.exit(0)

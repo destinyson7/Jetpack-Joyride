@@ -6,6 +6,8 @@ from fire_beam import *
 import time
 from boost import Boost
 from bullet import Bullet
+import os
+import sys
 
 
 class Mandalorian(Character):
@@ -21,7 +23,17 @@ class Mandalorian(Character):
         self.__shield = False
         self.__bullet_number = 0
         self.__centre = 26
-        # self.lives = 50
+
+        self.__game_over_display = []
+
+        with open('loss.txt', 'r') as f:
+            pic = f.readlines()
+
+            for i in pic:
+                # print(i)
+                self.__game_over_display.append(list(i))
+
+        # time.sleep(1)
 
     @property
     def coordinates(self):
@@ -78,6 +90,9 @@ class Mandalorian(Character):
                 if board.grid[i][j].obstacle:
                     if not self.shield:
                         self.lives -= 1
+
+                        if self.lives <= 0:
+                            self.game_over()
 
                     FireBeam.erase(board.grid[i][j].beam_number, board)
 
@@ -254,3 +269,31 @@ class Mandalorian(Character):
 
         Bullet(x, y, self.bullet_number)
         self.bullet_number += 1
+
+    def game_over(self):
+
+        os.system('clear')
+
+        pr = ""
+
+        pr += (Back.BLACK + Style.BRIGHT + "\n" + Style.RESET_ALL) * 11
+
+        for i in range(len(self.__game_over_display)):
+            for j in range(len(self.__game_over_display[i])):
+
+                pr += Fore.RED + Style.BRIGHT + \
+                    self.__game_over_display[i][j] + Style.RESET_ALL
+
+            # pr += "\n"
+
+        pr += (Back.BLACK + Style.BRIGHT + "\n" + Style.RESET_ALL) * 12
+
+        pr += "\t" * 12 + Fore.YELLOW + Style.BRIGHT + \
+            "Your Score: " + str(self.score) + Style.RESET_ALL
+
+        pr += (Back.BLACK + Style.BRIGHT + "\n" + Style.RESET_ALL) * 5
+
+        print(pr)
+
+        # time.sleep(2)
+        sys.exit(0)

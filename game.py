@@ -13,7 +13,7 @@ from boss import Boss
 from ice_ball import IceBall
 from magnet import Magnet
 
-sys.stderr.write("\x1b[2J\x1b[H")
+# sys.stderr.write("\x1b[2J\x1b[H")
 # Code for clear screen in UNIX machines
 
 prev = time.time()
@@ -34,6 +34,8 @@ boss.insert(board)
 
 mandalorian = Mandalorian()
 mandalorian.insert(board, boss, first_time)
+
+os.system('clear')
 
 while True:
 
@@ -126,6 +128,7 @@ while True:
         mandalorian.generate_bullet()
 
     if mandalorian.lives <= 0:
+        mandalorian.game_over()
         # TODO: display game over screen
         break
 

@@ -68,10 +68,10 @@ class IceBall:
                     if not mandalorian.shield:
                         mandalorian.lives -= 1
 
-                        mandalorian.flash()
-
                         if mandalorian.lives <= 0:
-                            sys.exit(0)
+                            mandalorian.game_over()
+
+                        mandalorian.flash()
 
                     else:
                         mandalorian.shield = False

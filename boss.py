@@ -55,7 +55,7 @@ class Boss(Character):
 
             for j in self.__coordinates[i]:
                 # print(i, j)
-                board.grid[i][j].display = Back.BLACK + Fore.BLUE + Style.BRIGHT + \
+                board.grid[i][j].display = Back.BLACK + Fore.RED + Style.BRIGHT + \
                     self.__display[x][y] + Style.RESET_ALL
 
                 if self.__display[x][y] != ' ':

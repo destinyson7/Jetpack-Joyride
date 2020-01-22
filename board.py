@@ -83,7 +83,7 @@ class Board:
         pr += "\033[0;0H"
         pr += "\n" * 4
 
-        pr += "Lives: " + Fore.RED + "❤ " * mandalorian.lives + \
+        pr += "Lives: " + Back.BLACK + Fore.RED + "❤ " * mandalorian.lives + \
             Style.RESET_ALL + "\t" + "Score: " + str(mandalorian.score)
 
         if self.curPos >= columns - columnsAtATime - 41:

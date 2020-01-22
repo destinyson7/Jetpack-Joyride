@@ -42,7 +42,7 @@ class IceBall:
 
             if (self.__start[1] + i) > columns - columnsAtATime:
                 board.grid[self.__start[0]][self.__start[1] + i].display = Back.BLACK + \
-                    Fore.BLUE + Style.BRIGHT + self.display[i] + Style.RESET_ALL
+                    Fore.RED + Style.BRIGHT + self.display[i] + Style.RESET_ALL
                 board.grid[self.__start[0]][self.__start[1] + i].isIceBall = True
 
     def move(board, mandalorian, boss):

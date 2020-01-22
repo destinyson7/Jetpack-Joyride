@@ -54,7 +54,7 @@ while True:
         board.curPos += 1 * board.game_speed
 
         if (cur - prev_ball) >= 2:
-            if board.curPos >= (columns - columnsAtATime - 1):
+            if board.curPos >= (columns - columnsAtATime - 41):
                 boss.generate_ice_balls()
                 prev_ball = cur
 
@@ -68,8 +68,7 @@ while True:
         for i in range(4 * board.game_speed):
             Bullet.move(board, mandalorian, boss)
 
-        if board.curPos >= (columns - columnsAtATime - 1):
-            for i in range(4 * board.game_speed):
+            if board.curPos >= (columns - columnsAtATime - 41):
                 IceBall.move(board, mandalorian, boss)
 
         mandalorian.movey(0, board)

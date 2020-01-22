@@ -142,7 +142,7 @@ class Mandalorian(Character):
                 last = max(last, j + x)
                 first = min(first, j + x)
 
-        if last >= (board.curPos + columnsAtATime - 1):
+        if last >= (board.curPos + columnsAtATime - 41):
             tmp = {}
             rr = 0
 
@@ -150,11 +150,11 @@ class Mandalorian(Character):
                 tmp[i] = []
 
                 if rr < 2:
-                    tmp[i].append(board.curPos + columnsAtATime - 2)
+                    tmp[i].append(board.curPos + columnsAtATime - 42)
 
                 else:
-                    tmp[i].append(board.curPos + columnsAtATime - 3)
-                    tmp[i].append(board.curPos + columnsAtATime - 1)
+                    tmp[i].append(board.curPos + columnsAtATime - 43)
+                    tmp[i].append(board.curPos + columnsAtATime - 41)
 
                 rr += 1
 

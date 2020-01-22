@@ -75,45 +75,9 @@ class IceBall:
                     IceBall.erase(i.__ice_ball_number, board)
                     Bullet.erase(board.grid[x][y].bullet_num, board)
 
-                elif board.grid[x][y + 1].isBullet:
-                    IceBall.erase(i.__ice_ball_number, board)
-                    Bullet.erase(board.grid[x][y + 1].bullet_num, board)
-
-                elif board.grid[x][y + 2].isBullet:
-                    IceBall.erase(i.__ice_ball_number, board)
-                    Bullet.erase(board.grid[x][y + 2].bullet_num, board)
-
-                elif board.grid[x][y + 3].isBullet:
-                    IceBall.erase(i.__ice_ball_number, board)
-                    Bullet.erase(board.grid[x][y + 3].bullet_num, board)
-
-                elif board.grid[x][y + 4].isBullet:
-                    IceBall.erase(i.__ice_ball_number, board)
-                    Bullet.erase(board.grid[x][y + 4].bullet_num, board)
-
-                elif board.grid[x][y + 5].isBullet:
-                    IceBall.erase(i.__ice_ball_number, board)
-                    Bullet.erase(board.grid[x][y + 5].bullet_num, board)
-
                 elif board.grid[x][y - 1].isBullet:
                     IceBall.erase(i.__ice_ball_number, board)
                     Bullet.erase(board.grid[x][y - 1].bullet_num, board)
-
-                elif board.grid[x][y - 2].isBullet:
-                    IceBall.erase(i.__ice_ball_number, board)
-                    Bullet.erase(board.grid[x][y - 2].bullet_num, board)
-
-                elif board.grid[x][y - 3].isBullet:
-                    IceBall.erase(i.__ice_ball_number, board)
-                    Bullet.erase(board.grid[x][y - 3].bullet_num, board)
-
-                elif board.grid[x][y - 4].isBullet:
-                    IceBall.erase(i.__ice_ball_number, board)
-                    Bullet.erase(board.grid[x][y - 4].bullet_num, board)
-
-                elif board.grid[x][y - 5].isBullet:
-                    IceBall.erase(i.__ice_ball_number, board)
-                    Bullet.erase(board.grid[x][y - 5].bullet_num, board)
 
                 elif board.grid[x][y].obstacle:
                     FireBeam.erase(board.grid[x][y].beam_number, board)

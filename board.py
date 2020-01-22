@@ -46,7 +46,7 @@ class Board:
         pr += "Lives: " + Fore.RED + "❤ " * mandalorian.lives + \
             Style.RESET_ALL + "\t" + "Score: " + str(mandalorian.score)
 
-        if self.curPos >= columns - columnsAtATime:
+        if self.curPos >= columns - columnsAtATime - 41:
             pr += "\t\t\t" + "Boss Lives: " + str(boss.lives) + "  " + "\n"
 
         else:

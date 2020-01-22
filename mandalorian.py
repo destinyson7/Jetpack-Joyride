@@ -302,6 +302,17 @@ class Mandalorian(Character):
 
         prev = time.time()
 
+        cur_cnt = 0
+        while cur_cnt < rows:
+            cur = time.time()
+
+            if cur - prev >= shift / 3:
+                cur_cnt += 1
+                prev = cur
+                self.movey(1, board, boss, first_time)
+
+                board.show(self, boss, first_time)
+
         while True:
             cur = time.time()
 

@@ -1,7 +1,7 @@
 from colorama import Fore, Back, Style
 
 rows = 35
-columns = 1500
+columns = 1800
 columnsAtATime = 150
 shift = 0.08
 beam_length = 7

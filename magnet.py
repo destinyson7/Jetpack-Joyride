@@ -61,7 +61,7 @@ class Magnet:
 
             xx += 1
 
-    def attract(board, mandalorian, boss):
+    def attract(board, mandalorian, boss, first_time):
 
         flag = False
 
@@ -75,23 +75,23 @@ class Magnet:
                 x = mando_pos[1]
                 y = mandalorian.coordinates[x][0]
 
-                print(x, y, i.__start[0], i.__start[1])
+                # print(x, y, i.__start[0], i.__start[1])
 
                 if x < i.__start[0]:
                     for j in range(2):
-                        mandalorian.movey(1, board, boss)
+                        mandalorian.movey(1, board, boss, first_time)
 
                 elif x > i.__start[0]:
                     for j in range(2):
-                        mandalorian.movey(-1, board, boss)
+                        mandalorian.movey(-1, board, boss, first_time)
 
                 if y < i.__start[1]:
                     for j in range(2):
-                        mandalorian.movex(1, board, boss)
+                        mandalorian.movex(1, board, boss, first_time)
 
                 elif y > i.__start[1]:
                     for j in range(2):
-                        mandalorian.movex(-1, board, boss)
+                        mandalorian.movex(-1, board, boss, first_time)
 
             i.show(board)
 

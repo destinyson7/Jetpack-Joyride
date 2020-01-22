@@ -7,6 +7,8 @@ from fire_beam import FireBeam
 from coin import Coin
 from boost import Boost
 from magnet import Magnet
+import time
+import sys
 
 
 class Board:
@@ -77,21 +79,30 @@ class Board:
 
         self.grid = np.array(self.grid)
 
-    def show(self, mandalorian, boss):
+    def show(self, mandalorian, boss, first_time):
 
         pr = ""
 
         pr += "\033[0;0H"
+
+        pr += Back.BLACK + Style.BRIGHT
+
         pr += "\n" * 4
 
         pr += "Lives: " + Back.BLACK + Fore.RED + "❤ " * mandalorian.lives + \
             Style.RESET_ALL + "\t" + "Score: " + str(mandalorian.score)
 
-        if self.curPos >= columns - columnsAtATime - 41:
-            pr += "\t\t\t" + "Boss Lives: " + str(boss.lives) + "  " + "\n"
+        time_remaining = int(max_time - (time.time() - first_time))
 
-        else:
-            pr += "\n"
+        if time_remaining <= 0:
+            sys.exit(0)
+
+        pr += "\t\t\t" + "Time Remaining: " + str(time_remaining)
+
+        if self.curPos >= columns - columnsAtATime - 41:
+            pr += "\t\t\t" + "Boss Lives: " + str(boss.lives) + "  "
+
+        pr += "\n"
 
         start = min(self.curPos, columns - columnsAtATime)
         end = start + self.__columnsAtATime
@@ -122,6 +133,8 @@ class Board:
 
             pr += border_display * 3
             pr += "\n"
+
+        pr += Style.RESET_ALL
 
         print(pr)
 
@@ -169,7 +182,7 @@ class Board:
         magnet_cnt = 0
 
         for j in range(200, columns - columnsAtATime - 25, 401):
-            x = random.randint(0, rows - 5)
+            x = random.randint(5, rows - 5)
             y = j + random.randint(0, 15)
 
             Magnet(x, y, self, magnet_cnt)

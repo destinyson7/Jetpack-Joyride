@@ -16,6 +16,12 @@ from magnet import Magnet
 sys.stderr.write("\x1b[2J\x1b[H")
 # Code for clear screen in UNIX machines
 
+prev = time.time()
+prev_ball = prev
+first_time = prev
+iteration = 0
+t = 0
+
 board = Board(rows, columns, columnsAtATime)
 board.insert()
 board.generate_beams()
@@ -27,12 +33,7 @@ boss = Boss()
 boss.insert(board)
 
 mandalorian = Mandalorian()
-mandalorian.insert(board, boss)
-
-prev = time.time()
-prev_ball = prev
-iteration = 0
-t = 0
+mandalorian.insert(board, boss, first_time)
 
 while True:
 
@@ -63,7 +64,7 @@ while True:
 
         if board.curPos < (columns - columnsAtATime):
             for i in range(board.game_speed):
-                mandalorian.movex(1, board, boss)
+                mandalorian.movex(1, board, boss, first_time)
 
         else:
             board.curPos = columns - columnsAtATime
@@ -75,11 +76,11 @@ while True:
                 IceBall.move(board, mandalorian, boss)
 
         for i in range(board.game_speed):
-            flag = Magnet.attract(board, mandalorian, boss)
+            flag = Magnet.attract(board, mandalorian, boss, first_time)
 
-        mandalorian.movey(0, board, boss)
+        mandalorian.movey(0, board, boss, first_time)
 
-        board.show(mandalorian, boss)
+        board.show(mandalorian, boss, first_time)
 
     char = user_input()
 
@@ -92,7 +93,7 @@ while True:
     if not flag:
         if char != 'w' and char != 'W':
             for i in range(board.game_speed):
-                mandalorian.free_fall(t, board, boss)
+                mandalorian.free_fall(t, board, boss, first_time)
                 boss.move(board, mandalorian)
 
     else:
@@ -100,17 +101,17 @@ while True:
 
     if char == 'w' or char == 'W':
         for i in range(board.game_speed):
-            mandalorian.movey(-1, board, boss)
+            mandalorian.movey(-1, board, boss, first_time)
             boss.move(board, mandalorian)
         t = 0
 
     elif char == 'a' or char == 'A':
         for i in range(board.game_speed):
-            mandalorian.movex(-1, board, boss)
+            mandalorian.movex(-1, board, boss, first_time)
 
     elif char == 'd' or char == 'D':
         for i in range(board.game_speed):
-            mandalorian.movex(1, board, boss)
+            mandalorian.movex(1, board, boss, first_time)
 
     elif char == 'q' or char == 'Q':
         break
@@ -128,4 +129,4 @@ while True:
         # TODO: display game over screen
         break
 
-    board.show(mandalorian, boss)
+    board.show(mandalorian, boss, first_time)

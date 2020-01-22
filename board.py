@@ -169,7 +169,7 @@ class Board:
 
         boost_cnt = 0
 
-        for j in range(73, columns - columnsAtATime - 25, 109):
+        for j in range(153, columns - columnsAtATime - 25, 109):
             x = random.randint(0, rows - 8)
             y = j + random.randint(0, 15)
 
@@ -181,7 +181,7 @@ class Board:
 
         magnet_cnt = 0
 
-        for j in range(200, columns - columnsAtATime - 25, 401):
+        for j in range(203, columns - columnsAtATime - 25, 401):
             x = random.randint(5, rows - 5)
             y = j + random.randint(0, 15)
 

@@ -129,7 +129,6 @@ while True:
 
     if mandalorian.lives <= 0:
         mandalorian.game_over()
-        # TODO: display game over screen
         break
 
     board.show(mandalorian, boss, first_time)

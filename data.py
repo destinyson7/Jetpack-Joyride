@@ -1,7 +1,7 @@
 from colorama import Fore, Back, Style
 
 rows = 35
-columns = 300
+columns = 1500
 columnsAtATime = 150
 shift = 0.08
 beam_length = 7
@@ -17,4 +17,4 @@ shield_cooloff = 600
 bullet_display = Back.BLACK + Fore.GREEN + Style.BRIGHT + 'O' + Style.RESET_ALL
 coin_display = Back.BLACK + Fore.CYAN + '$' + Style.RESET_ALL
 shield_display = Back.RED + Style.BRIGHT + ' ' + Style.RESET_ALL
-max_time = 30
+max_time = 150

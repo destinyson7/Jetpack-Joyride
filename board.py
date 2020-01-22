@@ -115,7 +115,7 @@ class Board:
 
         boost_cnt = 0
 
-        for j in range(143, columns - columnsAtATime - 25, 109):
+        for j in range(73, columns - columnsAtATime - 25, 109):
             x = random.randint(0, rows - 8)
             y = j + random.randint(0, 15)
 

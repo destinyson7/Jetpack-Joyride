@@ -297,3 +297,34 @@ class Mandalorian(Character):
 
         # time.sleep(2)
         sys.exit(0)
+
+    def move_end(self, board, boss, first_time):
+
+        prev = time.time()
+
+        while True:
+            cur = time.time()
+
+            if cur - prev >= shift / 3:
+                prev = cur
+                tmp = {}
+
+                last = -1
+                first = columns + 10
+
+                for i in self.__coordinates:
+                    tmp[i] = []
+
+                    for j in self.__coordinates[i]:
+                        tmp[i].append(j + 1)
+                        last = max(last, j + 1)
+                        first = min(first, j + 1)
+
+                self.erase(board)
+                self.__coordinates = tmp
+                self.insert(board, boss, first_time)
+
+                board.show(self, boss, first_time)
+
+                if last == columns - 1:
+                    break

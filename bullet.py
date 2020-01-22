@@ -25,7 +25,7 @@ class Bullet:
                 board.grid[i.__x][i.__y].isBullet = False
                 break
 
-    def move(board, mandalorian, boss):
+    def move(board, mandalorian, boss, first_time):
 
         for i in bullets:
 
@@ -58,6 +58,8 @@ class Bullet:
                     mandalorian.score += 15
 
                     if boss.lives <= 0:
+                        boss.erase(board)
+                        mandalorian.move_end(board, boss, first_time)
                         boss.game_over(mandalorian)
                         # sys.exit(0)
 

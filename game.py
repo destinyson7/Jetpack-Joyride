@@ -72,7 +72,7 @@ while True:
             board.curPos = columns - columnsAtATime
 
         for i in range(4 * board.game_speed):
-            Bullet.move(board, mandalorian, boss)
+            Bullet.move(board, mandalorian, boss, first_time)
 
             if board.curPos >= (columns - columnsAtATime - 41):
                 IceBall.move(board, mandalorian, boss)

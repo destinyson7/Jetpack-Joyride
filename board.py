@@ -14,11 +14,51 @@ class Board:
         self.__rows = rows
         self.__columns = columns
         self.__columnsAtATime = columnsAtATime
-        self.curPos = 0
-        self.game_speed = 1
-        self.speed_cnt = 0
-        self.shield_cnt = 0
-        self.shield_cooloff = shield_cooloff
+        self.__curPos = 0
+        self.__game_speed = 1
+        self.__speed_cnt = 0
+        self.__shield_cnt = 0
+        self.__shield_cooloff = shield_cooloff
+
+    @property
+    def curPos(self):
+        return self.__curPos
+
+    @curPos.setter
+    def curPos(self, curPos):
+        self.__curPos = curPos
+
+    @property
+    def game_speed(self):
+        return self.__game_speed
+
+    @game_speed.setter
+    def game_speed(self, game_speed):
+        self.__game_speed = game_speed
+
+    @property
+    def speed_cnt(self):
+        return self.__speed_cnt
+
+    @speed_cnt.setter
+    def speed_cnt(self, speed_cnt):
+        self.__speed_cnt = speed_cnt
+
+    @property
+    def shield_cnt(self):
+        return self.__shield_cnt
+
+    @shield_cnt.setter
+    def shield_cnt(self, shield_cnt):
+        self.__shield_cnt = shield_cnt
+
+    @property
+    def shield_cooloff(self):
+        return self.__shield_cooloff
+
+    @shield_cnt.setter
+    def shield_cooloff(self, shield_cooloff):
+        self.__shield_cooloff = shield_cooloff
 
     def insert(self):
         # self.grid = np.full((self.rows, self.columns), Base())

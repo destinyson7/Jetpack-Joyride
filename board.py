@@ -97,7 +97,7 @@ class Board:
         if time_remaining <= 0:
             sys.exit(0)
 
-        pr += "\t\t\t" + "Time Remaining: " + str(time_remaining)
+        pr += "\t\t\t" + "Time Remaining: " + str(time_remaining).zfill(3)
 
         if self.curPos >= columns - columnsAtATime - 41:
             pr += "\t\t\t" + "Boss Lives: " + str(boss.lives) + "  "

@@ -31,3 +31,15 @@ class Character(Base):
     @onGround.setter
     def onGround(self, onGround):
         self.__onGround = onGround
+
+    def movey(self, y, board):
+        tmp = {}
+
+        diff = 0
+
+        for i in self.__coordinates:
+            tmp[start + diff] = self.__coordinates[i]
+            # print(start, diff, i, i + diff, "hehe")
+            diff += 1
+
+        self.__coordinates = tmp

@@ -78,16 +78,20 @@ class Magnet:
                 print(x, y, i.__start[0], i.__start[1])
 
                 if x < i.__start[0]:
-                    mandalorian.movey(2, board, boss)
+                    for j in range(2):
+                        mandalorian.movey(1, board, boss)
 
                 elif x > i.__start[0]:
-                    mandalorian.movey(-2, board, boss)
+                    for j in range(2):
+                        mandalorian.movey(-1, board, boss)
 
                 if y < i.__start[1]:
-                    mandalorian.movex(2, board, boss)
+                    for j in range(2):
+                        mandalorian.movex(1, board, boss)
 
                 elif y > i.__start[1]:
-                    mandalorian.movex(-2, board, boss)
+                    for j in range(2):
+                        mandalorian.movex(-1, board, boss)
 
             i.show(board)
 

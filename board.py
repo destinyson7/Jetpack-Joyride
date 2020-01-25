@@ -87,7 +87,7 @@ class Board:
 
         pr += Back.BLACK + Style.BRIGHT
 
-        pr += "\n" * 4
+        # pr += "\n" * 4
 
         pr += "Lives: " + Back.BLACK + Fore.RED + "❤ " * mandalorian.lives + \
             Style.RESET_ALL + "\t" + "Score: " + str(mandalorian.score)

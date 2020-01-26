@@ -21,6 +21,7 @@ This game has been written using _almost_ Vanilla Python. It is important to not
 ### Prerequisites
 - python3
 - colorama module in python3
+- numpy library in python3
 
 ### Created by
 - Tanish Lad (2018114005)
